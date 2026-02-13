@@ -23,12 +23,13 @@
     }
 
     #display {
-      width: 100%;
+      width: 243px;
       height: 50px;
       font-size: 22px;
       text-align: right;
       margin-bottom: 10px;
       padding-right: 10px;
+      border-radius: 5px;
     }
 
     .buttons {
@@ -52,13 +53,13 @@
     }
 
     button.equal {
-      background: #4caf50;
+      background: #696969;
       color: white;
       grid-column: span 2;
     }
 
     button.clear {
-      background: #f44336;
+      background: #696969;
       color: white;
       grid-column: span 2;
     }
@@ -72,12 +73,12 @@
         <button onclick="appendValue('8')">8</button>
         <button onclick="appendValue('9')">9</button>
 
-        <button class="operator" onclick="appendValue('/')">%</button>
+        <button class="operator" onclick="appendValue('/')">÷</button>
 
         <button onclick="appendValue('4')">4</button>
         <button onclick="appendValue('5')">5</button>
         <button onclick="appendValue('6')">6</button>
-        <button class="operator" onclick="appendValue('*')">*</button>
+        <button class="operator" onclick="appendValue('*')">×</button>
 
         <button onclick="appendValue('1')">1</button>
         <button onclick="appendValue('2')">2</button>
@@ -90,6 +91,8 @@
 
         <button class="operator" onclick="appendValue('+')">+</button>
 
+        <button class="operator" onclick="appendValue('%')">%</button>
+
         <button class="equal" onclick="calculate()">=</button>
 
         <button class="clear" onclick="clearDisplay()">C</button>
@@ -99,6 +102,18 @@
       const display = document.getElementById("display");
       function appendValue(value) {
         display.value += value;
+      }
+
+      function calculate() {
+        try {
+          display.value = eval(display.value);
+        } catch (error) {
+          display.value = "Error";
+        }
+      }
+
+      function clearDisplay() {
+        display.value = "";
       }
     </script>
   </body>
